@@ -1,3 +1,4 @@
+
 /// Represents a country with its name, capital, and flag.
 class Country {
   final Map<String, dynamic> name;
@@ -13,14 +14,14 @@ class Country {
 
   Country({
     required this.name,
-    required this.capital,
+    this.capital,
     required this.region,
-    required this.subregion,
+    this.subregion,
     required this.population,
-    required this.languages,
-    required this.currencies,
-    required this.borders,
-    required this.timezones,
+    this.languages,
+    this.currencies,
+    this.borders,
+    this.timezones,
     required this.flag,
   });
 
@@ -28,15 +29,32 @@ class Country {
   factory Country.fromJson(Map<String, dynamic> json) {
     return Country(
       name: json['name'],
-      capital: (json['capital'] as List?)?.cast<String>(),
+      capital:
+          json['capital'] != null ? List<String>.from(json['capital']) : null,
       region: json['region'],
       subregion: json['subregion'],
       population: json['population'],
       languages: json['languages'],
       currencies: json['currencies'],
-      borders: (json['borders'] as List?)?.cast<String>(),
-      timezones: (json['timezones'] as List?)?.cast<String>(),
-      flag: json['flags']['png'],
+      borders:
+          json['borders'] != null ? List<String>.from(json['borders']) : null,
+      timezones: json['timezones'] != null
+          ? List<String>.from(json['timezones'])
+          : null,
+      flag: json['flags']['png'] ?? '',
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'capital': capital,
+        'region': region,
+        'subregion': subregion,
+        'population': population,
+        'languages': languages,
+        'currencies': currencies,
+        'borders': borders,
+        'timezones': timezones,
+        'flags': {'png': flag},
+      };
 }

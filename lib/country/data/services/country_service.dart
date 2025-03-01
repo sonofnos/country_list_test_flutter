@@ -110,4 +110,9 @@ class CountryService {
 
     throw Exception('Failed to load country after multiple retries');
   }
+
+  /// Gets country details by name
+  Future<Country> getCountryDetails(String name) async {
+    return getCountryByName(name);
+  }
 }

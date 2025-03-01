@@ -1,6 +1,6 @@
 import 'package:country_list_test_flutter/country/data/services/country_service.dart';
 import 'package:country_list_test_flutter/country/domain/models/country.dart';
-import 'package:country_list_test_flutter/country_detail_screen.dart';
+import 'package:country_list_test_flutter/country/presentation/screens/country_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
